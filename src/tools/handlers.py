@@ -111,7 +111,26 @@ def add_note(args, note_book: NoteBook):
     return "Note added."
 
 
+@note_input_error
+def add_tag(args, note_book: NoteBook):
+    note, tag = args
+    record = note_book.find(note)
+    if not record:
+        raise ValueError(f"Note for {note} doesn't exist. Please add note first")
+    note.add_tag(tag)
 
+
+@note_input_error
+def remove_tag(args, note_book: NoteBook):
+    note, tag_to_remove = args
+    record = note_book.find(note)
+    if not record:
+        raise ValueError(f"Note for {note} doesn't exist. Please add note first")
+    note.remove_tag(tag_to_remove)
+    return f"Tag {tag_to_remove} removed."
+
+
+@input_error
 def add_address(args, book: AddressBook):
     """adds address to contact"""
     name, address = args
@@ -121,6 +140,8 @@ def add_address(args, book: AddressBook):
     record.add_postal_address(address)
     return f"{name}`s address is added"
 
+
+@input_error
 def change_address(args, book: AddressBook):
     """changes existing address of contact"""
     name, new_address = args

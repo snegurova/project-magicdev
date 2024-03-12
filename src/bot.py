@@ -1,20 +1,36 @@
 import os
 from src.classes.record import Record
 from src.classes.addressBook import AddressBook
-from src.tools.handlers import add_birthday, add_contact, add_email, birthdays, change_contact, change_email, parse_input, phone, print_contacts, show_birthday
 from src.classes.noteBook import NoteBook
-from src.tools.handlers import add_birthday, add_contact, add_note, birthdays, change_contact, parse_input, phone, print_contacts, show_birthday, add_address, change_address
+from src.tools.handlers import (
+    add_birthday,
+    add_contact,
+    add_email,
+    add_note,
+    birthdays,
+    change_contact,
+    change_email,
+    parse_input,
+    phone,
+    print_contacts,
+    show_birthday,
+    add_address,
+    change_address,
+    add_tag,
+    remove_tag,
+)
 import pickle
+
 
 def bot():
     book = None
     book_from_file = None
-    if os.path.isfile('book.bin'):
-        with open('book.bin', 'rb') as file:
+    if os.path.isfile("book.bin"):
+        with open("book.bin", "rb") as file:
             book_from_file = pickle.load(file)
     print(str(book_from_file))
     print("Welcome to the assistant bot!")
-    
+
     if book_from_file:
         book = book_from_file
     else:
@@ -27,7 +43,7 @@ def bot():
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            with open('book.bin', 'wb') as file:
+            with open("book.bin", "wb") as file:
                 pickle.dump(book, file)
             print("Good bye!")
             break
@@ -60,9 +76,14 @@ def bot():
         elif command == "birthdays":
             birthdays(args, book)
             print("How can I help you?")
-
         elif command == "add-note":
             print(add_note(args, note_book))
+        elif command == "add-tag":
+            print(add_tag(args, note_book))
+            print("How can I help you?")
+        elif command == "remove_tag":
+            print(remove_tag(args, note_book))
+            print("How can I help you?")
         elif command == "add-address":
             print(add_address(args, book))
             print("How can I help you?")
