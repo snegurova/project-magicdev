@@ -94,7 +94,7 @@ def show_birthday(args, book: AddressBook):
     return f"Contact {name} birthday is: {str(record.birthday)}"
 
 @input_error_days
-def birthdays(args ,book: AddressBook):
+def birthdays(args, book: AddressBook):
     days, = args
     if len(book) > 0:
         book.get_birthdays_per_days(days)
@@ -150,3 +150,7 @@ def change_address(args, book: AddressBook):
         raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
     record.edit_postal_address(new_address)
     return f"{name}`s address is changed."
+
+def search(args, book: AddressBook):
+    search_string, = args
+    book.search(search_string)

@@ -1,6 +1,7 @@
 import os
 from src.classes.record import Record
 from src.classes.addressBook import AddressBook
+from src.tools.handlers import add_birthday, add_contact, add_email, birthdays, change_contact, change_email, parse_input, phone, print_contacts, search, show_birthday
 from src.classes.noteBook import NoteBook
 from src.tools.handlers import (
     add_birthday,
@@ -89,6 +90,9 @@ def bot():
             print("How can I help you?")
         elif command == "change-address":
             print(change_address(args, book))
+            print("How can I help you?")
+        elif command == "search":
+            print(search(args, book))
             print("How can I help you?")
         else:
             print("Invalid command.")

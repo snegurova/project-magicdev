@@ -7,7 +7,7 @@ from src.classes.book import Book
 class AddressBook(Book):
 
     def __str__(self):
-        res = f'|{'Name':^15}|{'Phone':<30}|{'Birthday':^15}|{'Address':<30}|\n'
+        res = f"|{'Name':^15}|{'Phone':<30}|{'Birthday':^15}|{'Address':<30}|\n"
         for key, record in self.data.items():
             phones = ", ".join((p.value for p in record.phones))
             birthday = datetime.strftime(record.birthday.value, '%d.%m.%Y') if record.birthday else "----"
@@ -38,4 +38,14 @@ class AddressBook(Book):
                 birthdays_per_week[str_day_of_week].append(name)
         for day, users in birthdays_per_week.items():
             print(f"{day[0]:^15} | {day[1]:^12} | {', '.join(users):^15}")
+            
+    def search(self, seach_str):
+        matches = []
+        for record in self.data.values():
+            if seach_str.lower() in record.name.value.lower():
+                matches.append(record)
+        if(len(matches)):
+            print(f'|{"Name":^15}|{"Phones":^25}|{"Birthday":^15}|{"Address":^25}|{"Email":^25}|')
+            for match in matches:
+                print(repr(match))
             

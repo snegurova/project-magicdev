@@ -82,4 +82,7 @@ class Record:
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
 
     def __repr__(self):
-        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+        address_str = self.address.value if self.address is not None else "No address"
+        birthday_str = str(self.birthday) if self.birthday is not None else "Not indicated"
+        emails_str = '; '.join(p.value for p in self.emails) if self.emails else "No emails"
+        return f"|{self.name.value:^15}|{'; '.join(p.value for p in self.phones):^25}|{birthday_str:^15}|{address_str:^25}|{emails_str:^25}|"
