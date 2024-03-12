@@ -1,6 +1,9 @@
 from src.tools.input_error import input_error, input_error_days
+from src.tools.note_input_error import note_input_error
 from src.classes.addressBook import AddressBook
+from src.classes.noteBook import NoteBook
 from src.classes.record import Record
+from src.classes.note import Note
 
 
 def parse_input(user_input):
@@ -67,3 +70,12 @@ def birthdays(args ,book: AddressBook):
         book.get_birthdays_per_days(days)
     else: 
         print("No added contacts yet")
+
+@note_input_error
+def add_note(args, note_book: NoteBook):
+    name, *description = args
+    note = note_book.find(name)
+    if not note:
+        note = Note(name, " ".join(description))
+    note_book.add_record(note)
+    return "Note added."
