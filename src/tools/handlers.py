@@ -31,6 +31,28 @@ def change_contact(args, book: AddressBook):
     return "Contact is changed."
 
 @input_error
+def add_email(args, book: AddressBook):
+    if len(args) != 2:
+        return "Give me name and email address please."
+    name, email = args
+    record = book.find(name)
+    if not record:
+        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+    record.add_email(email)
+    return "Email is added"
+
+@input_error
+def change_email(args, book: AddressBook):
+    if len(args) != 3:
+        return "Give me name old email and new email address please."
+    name, email, new_email = args
+    record = book.find(name)
+    if not record:
+        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+    record.change_email(email, new_email)
+    return "Email is changed."
+
+@input_error
 def phone(args, book: AddressBook):
     name = args[0]
     record = book.find(name)
