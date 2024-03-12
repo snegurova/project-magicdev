@@ -2,6 +2,7 @@ import os
 from src.classes.record import Record
 from src.classes.addressBook import AddressBook
 from src.tools.handlers import add_birthday, add_contact, add_email, birthdays, change_contact, change_email, parse_input, phone, print_contacts, show_birthday
+from src.classes.noteBook import NoteBook
 import pickle
 
 def bot():
@@ -12,10 +13,14 @@ def bot():
             book_from_file = pickle.load(file)
     print(str(book_from_file))
     print("Welcome to the assistant bot!")
+    
     if book_from_file:
         book = book_from_file
     else:
         book = AddressBook()
+
+    note_book = NoteBook()
+
     while True:
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
@@ -54,5 +59,8 @@ def bot():
         elif command == "birthdays":
             birthdays(book)
             print("How can I help you?")
+
+        elif command == "add-note":
+            print(add_note(args, note_book))
         else:
             print("Invalid command.")
