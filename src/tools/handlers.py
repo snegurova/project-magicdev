@@ -1,4 +1,4 @@
-from src.tools.input_error import input_error
+from src.tools.input_error import input_error, input_error_days
 from src.classes.addressBook import AddressBook
 from src.classes.record import Record
 
@@ -60,8 +60,10 @@ def show_birthday(args, book: AddressBook):
         raise ValueError(f"Birthday for contact {name} is not added yet. Please add birthday first")
     return f"Contact {name} birthday is: {str(record.birthday)}"
 
-def birthdays(book: AddressBook):
+@input_error_days
+def birthdays(args ,book: AddressBook):
+    days, = args
     if len(book) > 0:
-        book.get_birthdays_per_week()
+        book.get_birthdays_per_days(days)
     else: 
         print("No added contacts yet")
