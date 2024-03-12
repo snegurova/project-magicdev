@@ -3,7 +3,7 @@ from src.classes.record import Record
 from src.classes.addressBook import AddressBook
 from src.tools.handlers import add_birthday, add_contact, add_email, birthdays, change_contact, change_email, parse_input, phone, print_contacts, show_birthday
 from src.classes.noteBook import NoteBook
-from src.tools.handlers import add_birthday, add_contact, add_note, birthdays, change_contact, parse_input, phone, print_contacts, show_birthday, add_address, change_address
+from src.tools.handlers import add_birthday, add_contact, add_note, birthdays, change_contact, parse_input, phone, print_contacts, show_birthday, add_address, change_address, delete_contact
 import pickle
 
 def bot():
@@ -60,7 +60,9 @@ def bot():
         elif command == "birthdays":
             birthdays(args, book)
             print("How can I help you?")
-
+        elif command == "delete":
+            print(delete_contact(args, book))
+            print("How can I help you?")
         elif command == "add-note":
             print(add_note(args, note_book))
         elif command == "add-address":
