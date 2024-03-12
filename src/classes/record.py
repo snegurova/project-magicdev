@@ -2,12 +2,17 @@ import re
 from src.classes.birthday import Birthday
 from src.classes.name import Name
 from src.classes.phone import Phone
+from src.classes.address import PostalAddress
 
 
 class Record:
-    def __init__(self, name, birthday = None):
+    def __init__(self, name, address = None, birthday = None):
         self.name = Name(name)
         self.phones = []
+        if address:
+            self.address = PostalAddress(address)
+        else:
+            self.address = None
         if birthday:
             self.birthday = Birthday(birthday)
         else:
@@ -45,8 +50,16 @@ class Record:
                 return f"{phone_to_find} exists"
         return f"{phone_to_find} have not been added yet"
 
+    def add_postal_address(self, address):
+        """adds address to record"""
+        self.address = PostalAddress(address)
+
+    def edit_postal_address(self, new_address):
+        """edits address in record"""
+        self.address = PostalAddress(new_address)
+
     def __str__(self):
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
-    
+
     def __repr__(self):
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"

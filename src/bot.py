@@ -1,7 +1,7 @@
 import os
 from src.classes.record import Record
 from src.classes.addressBook import AddressBook
-from src.tools.handlers import add_birthday, add_contact, birthdays, change_contact, parse_input, phone, print_contacts, show_birthday
+from src.tools.handlers import add_birthday, add_contact, birthdays, change_contact, parse_input, phone, print_contacts, show_birthday, add_address, change_address
 import pickle
 
 def bot():
@@ -47,6 +47,12 @@ def bot():
             print("How can I help you?")
         elif command == "birthdays":
             birthdays(book)
+            print("How can I help you?")
+        elif command == "add-address":
+            print(add_address(args, book))
+            print("How can I help you?")
+        elif command == "change-address":
+            print(change_address(args, book))
             print("How can I help you?")
         else:
             print("Invalid command.")
