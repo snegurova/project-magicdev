@@ -11,6 +11,7 @@ def parse_input(user_input):
     cmd = cmd.strip().lower()
     return cmd, *args
 
+
 @input_error
 def add_contact(args, book: AddressBook):
     name, phone = args
@@ -21,6 +22,7 @@ def add_contact(args, book: AddressBook):
     book.add_record(record)
     return "Contact added."
 
+
 @input_error
 def change_contact(args, book: AddressBook):
     name, phone, new_phone = args
@@ -29,6 +31,7 @@ def change_contact(args, book: AddressBook):
         raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
     record.edit_phone(phone, new_phone)
     return "Contact is changed."
+
 
 @input_error
 def add_email(args, book: AddressBook):
@@ -60,11 +63,13 @@ def phone(args, book: AddressBook):
         raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
     return str(record)
 
+
 def print_contacts(book: AddressBook):
     if len(book) > 0:
         print(str(book))
-    else: 
+    else:
         print("No added contacts yet")
+
 
 @input_error
 def add_birthday(args, book: AddressBook):
@@ -75,20 +80,24 @@ def add_birthday(args, book: AddressBook):
     record.add_birthday(birthday)
     return "Birthday is added"
 
+
 @input_error
 def show_birthday(args, book: AddressBook):
-    name, = args
+    (name,) = args
     record = book.find(name)
     if not record:
         raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
     if not record.birthday:
-        raise ValueError(f"Birthday for contact {name} is not added yet. Please add birthday first")
+        raise ValueError(
+            f"Birthday for contact {name} is not added yet. Please add birthday first"
+        )
     return f"Contact {name} birthday is: {str(record.birthday)}"
+
 
 def birthdays(book: AddressBook):
     if len(book) > 0:
         book.get_birthdays_per_week()
-    else: 
+    else:
         print("No added contacts yet")
 
 @note_input_error
@@ -99,3 +108,23 @@ def add_note(args, note_book: NoteBook):
         note = Note(name, " ".join(description))
     note_book.add_record(note)
     return "Note added."
+
+
+
+def add_address(args, book: AddressBook):
+    """adds address to contact"""
+    name, address = args
+    record = book.find(name)
+    if not record:
+        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+    record.add_postal_address(address)
+    return f"{name}`s address is added"
+
+def change_address(args, book: AddressBook):
+    """changes existing address of contact"""
+    name, new_address = args
+    record = book.find(name)
+    if not record:
+        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+    record.edit_postal_address(new_address)
+    return f"{name}`s address is changed."
