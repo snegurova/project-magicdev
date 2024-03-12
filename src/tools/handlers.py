@@ -87,7 +87,7 @@ def add_note(args, note_book: NoteBook):
     note_book.add_record(note)
     return "Note added."
 
-# add handler for add-address, change-address
+
 
 def add_address(args, book: AddressBook):
     """adds address to contact"""
