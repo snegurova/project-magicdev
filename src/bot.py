@@ -58,7 +58,7 @@ def bot():
             print(show_birthday(args, book))
             print("How can I help you?")
         elif command == "birthdays":
-            birthdays(book)
+            birthdays(args, book)
             print("How can I help you?")
 
         elif command == "add-note":

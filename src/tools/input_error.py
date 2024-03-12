@@ -16,3 +16,12 @@ def input_error(func):
         except IndexError:
             return "Enter user name"
     return inner
+
+def input_error_days(func):
+    def inner(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except ValueError:
+            print("Enter amount of days")
+            return 
+    return inner

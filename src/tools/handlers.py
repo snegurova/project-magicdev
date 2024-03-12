@@ -1,4 +1,4 @@
-from src.tools.input_error import input_error
+from src.tools.input_error import input_error, input_error_days
 from src.tools.note_input_error import note_input_error
 from src.classes.addressBook import AddressBook
 from src.classes.noteBook import NoteBook
@@ -93,11 +93,12 @@ def show_birthday(args, book: AddressBook):
         )
     return f"Contact {name} birthday is: {str(record.birthday)}"
 
-
-def birthdays(book: AddressBook):
+@input_error_days
+def birthdays(args ,book: AddressBook):
+    days, = args
     if len(book) > 0:
-        book.get_birthdays_per_week()
-    else:
+        book.get_birthdays_per_days(days)
+    else: 
         print("No added contacts yet")
 
 @note_input_error
