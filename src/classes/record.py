@@ -3,6 +3,7 @@ from src.classes.birthday import Birthday
 from src.classes.name import Name
 from src.classes.phone import Phone
 from src.classes.address import PostalAddress
+from src.classes.emailAddress import EmailAddress
 
 
 class Record:
@@ -13,6 +14,7 @@ class Record:
             self.address = PostalAddress(address)
         else:
             self.address = None
+        self.emails = []
         if birthday:
             self.birthday = Birthday(birthday)
         else:
@@ -20,6 +22,24 @@ class Record:
 
     def add_birthday(self, birthday):
         self.birthday = Birthday(birthday)
+
+    def add_email(self, email):
+        self.emails.append(EmailAddress(email))
+
+    def change_email(self, email_to_find, new_email):
+        pattern = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+        if not re.match(pattern, email_to_find):
+            raise ValueError("Please use correct e-mail address format. Example: 'ira@gmail.com', 'A111@ukr.net'")
+        if not re.match(pattern, new_email):
+            raise ValueError("Please use correct new e-mail address format. Example: 'ira@gmail.com', 'A111@ukr.net'")
+        is_changed = False
+        for email in self.emails:
+            if email.value == email_to_find:
+                email.value = new_email
+                is_changed = True
+                break
+        if not is_changed:
+            raise ValueError(f"Email '{email_to_find}' for contact '{self.name}' not found.")
 
     def add_phone(self, phone):
         for item in self.phones:
