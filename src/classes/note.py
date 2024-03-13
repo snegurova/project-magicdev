@@ -7,5 +7,8 @@ class Note:
         self.name = Name(title)
         self.description = Description(description)
 
+    def change_description(self, description):
+        self.description = Description(description)
+
     def __repr__(self):
         return f"Note: {self.name.value}, description: {self.description.value}"

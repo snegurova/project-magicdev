@@ -1,3 +1,4 @@
+import pickle
 from src.tools.input_error import input_error, input_error_days
 from src.tools.note_input_error import note_input_error
 from src.classes.addressBook import AddressBook
@@ -103,20 +104,38 @@ def birthdays(args, book: AddressBook):
 
 @note_input_error
 def add_note(args, note_book: NoteBook):
-    name, *description = args
+    name = " ".join(args).strip()
+    description = input("Enter a description: ")
     note = note_book.find(name)
     if not note:
-        note = Note(name, " ".join(description))
+        note = Note(name, description)
     note_book.add_record(note)
-    return "Note added."
+    return "Note is added."
+
+def all_notes(note_book: NoteBook):
+    if len(note_book) > 0:
+        print(str(note_book))
+    else:
+        print("No added notes yet")
 
 @note_input_error
 def change_note(args, note_book: NoteBook):
-    name, *new_description = args
+    name = " ".join(args).strip()
+    new_description = input("Enter a description: ")
     note = note_book.find(name)
-    note = Note(name, " ".join(new_description))
-    note_book.add_record(note)
-    return "Note changed."
+    if not note:
+        raise ValueError(f"Note {name} is not added yet. Please add note first")
+    note.change_description(new_description)
+    return "Note is changed."
+
+@note_input_error
+def delete_note(args, note_book: NoteBook):
+    name = " ".join(args).strip()
+    note = note_book.find(name)
+    if not note:
+        raise ValueError(f"Note {name} is not added yet. Please add note first")
+    note_book.delete(name)
+    return f"Note {note} is deleted."
 
 def add_address(args, book: AddressBook):
     """adds address to contact"""
@@ -139,3 +158,8 @@ def change_address(args, book: AddressBook):
 def search(args, book: AddressBook):
     search_string, = args
     book.search(search_string)
+
+def save_to_file(files):
+    for f, book in files.items():
+        with open(f, 'wb') as file:
+            pickle.dump(book, file)
