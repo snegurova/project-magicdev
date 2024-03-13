@@ -110,7 +110,13 @@ def add_note(args, note_book: NoteBook):
     note_book.add_record(note)
     return "Note added."
 
-
+@note_input_error
+def change_note(args, note_book: NoteBook):
+    name, *new_description = args
+    note = note_book.find(name)
+    note = Note(name, " ".join(new_description))
+    note_book.add_record(note)
+    return "Note changed."
 
 def add_address(args, book: AddressBook):
     """adds address to contact"""
