@@ -1,5 +1,6 @@
-from src.tools.input_error import input_error, input_error_days, input_error_address
+from src.tools.input_error import input_error, input_error_days
 from src.tools.note_input_error import note_input_error
+from src.tools.input_error_address import input_error_address
 from src.classes.addressBook import AddressBook
 from src.classes.noteBook import NoteBook
 from src.classes.record import Record
