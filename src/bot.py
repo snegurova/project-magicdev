@@ -16,7 +16,7 @@ from src.tools.handlers import (
     print_contacts,
     show_birthday,
     add_address,
-    change_address,
+    change_address, delete_contact,
     add_tag,
     remove_tag,
 )
@@ -76,6 +76,9 @@ def bot():
             print("How can I help you?")
         elif command == "birthdays":
             birthdays(args, book)
+            print("How can I help you?")
+        elif command == "delete":
+            print(delete_contact(args, book))
             print("How can I help you?")
         elif command == "add-note":
             print(add_note(args, note_book))

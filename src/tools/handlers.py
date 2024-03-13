@@ -4,6 +4,7 @@ from src.classes.addressBook import AddressBook
 from src.classes.noteBook import NoteBook
 from src.classes.record import Record
 from src.classes.note import Note
+from src.classes.book import Book
 
 
 def parse_input(user_input):
@@ -22,6 +23,13 @@ def add_contact(args, book: AddressBook):
     book.add_record(record)
     return "Contact added."
 
+@input_error
+def delete_contact(args, book:AddressBook):
+    if len(args) == 0:
+        return "Give me user name please."
+    name, = args
+    book.delete(name)
+    return f"Contact {name} is deleted."
 
 @input_error
 def change_contact(args, book: AddressBook):
