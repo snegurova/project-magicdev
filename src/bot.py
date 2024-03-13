@@ -21,8 +21,12 @@ from src.tools.handlers import (
     save_to_file, 
     show_birthday, 
     change_address,
+    delete_contact,
+    add_tag,
+    remove_tag,
     )
 from src.tools.factory import factory
+
 
 
 def bot():
@@ -69,6 +73,9 @@ def bot():
         elif command == "birthdays":
             birthdays(args, book)
             print("How can I help you?")
+        elif command == "delete":
+            print(delete_contact(args, book))
+            print("How can I help you?")
         elif command == "add-note":
             print(add_note(args, note_book))
             print("How can I help you?")
@@ -80,6 +87,11 @@ def bot():
             print("How can I help you?")
         elif command == "all-notes":
             print(all_notes(note_book))
+        elif command == "add-tag":
+            print(add_tag(args, note_book))
+            print("How can I help you?")
+        elif command == "remove_tag":
+            print(remove_tag(args, note_book))
             print("How can I help you?")
         elif command == "add-address":
             print(add_address(args, book))

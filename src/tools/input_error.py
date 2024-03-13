@@ -25,3 +25,6 @@ def input_error_days(func):
             print("Enter amount of days")
             return 
     return inner
+
+
+
