@@ -1,4 +1,4 @@
-from src.tools.input_error import input_error, input_error_days
+from src.tools.input_error import input_error, input_error_days, input_error_address
 from src.tools.note_input_error import note_input_error
 from src.classes.addressBook import AddressBook
 from src.classes.noteBook import NoteBook
@@ -138,7 +138,7 @@ def remove_tag(args, note_book: NoteBook):
     return f"Tag {tag_to_remove} removed."
 
 
-@input_error
+@input_error_address
 def add_address(args, book: AddressBook):
     """adds address to contact"""
     name, address = args
@@ -149,7 +149,7 @@ def add_address(args, book: AddressBook):
     return f"{name}`s address is added"
 
 
-@input_error
+@input_error_address
 def change_address(args, book: AddressBook):
     """changes existing address of contact"""
     name, new_address = args
