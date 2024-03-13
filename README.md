@@ -2,8 +2,6 @@
 
 Below is a sample README file for your console application in Python. This README provides an overview of your application, instructions on how to use it, and details about the available commands.
 
-markdown
-Copy code
 # Assistant Bot
 
 Assistant Bot is a console-based application written in Python. It serves as a personal assistant for managing contacts and notes efficiently.
@@ -58,9 +56,6 @@ add-address: Add or change the address of a contact.
 change-address: Change the address of a contact.
 search: Search for contacts by various criteria.
 close or exit: Save changes and exit the application.
-
-## Contributing
-Contributions are welcome! Feel free to open issues and pull requests to suggest new features, report bugs, or improve the existing codebase.
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
