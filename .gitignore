@@ -1,5 +1,6 @@
-# Ignore address book file
+# Ignore book files
 book.bin
+note-book.bin
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

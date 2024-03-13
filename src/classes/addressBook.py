@@ -7,7 +7,7 @@ from src.classes.book import Book
 class AddressBook(Book):
 
     def __str__(self):
-        res = f"|{'Name':^15}|{'Phone':<30}|{'Birthday':^15}|{'Address':<30}|\n"
+        res = f"|{'Name':^15}|{'Phone':<30}|{'Birthday':^15}|{'Address':<30}|\n|{"-"*15}|{"-"*30}|{"-"*15}|{"-"*30}|\n"
         for key, record in self.data.items():
             phones = ", ".join((p.value for p in record.phones))
             birthday = datetime.strftime(record.birthday.value, '%d.%m.%Y') if record.birthday else "----"

@@ -9,6 +9,9 @@ class Note:
         self.description = Description(description)
         self.tags = set()
 
+    def change_description(self, description):
+        self.description = Description(description)
+
     def add_tag(self, tag):
         """adds tag to note"""
         new_tag = Tag(tag)

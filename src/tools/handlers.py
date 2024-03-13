@@ -1,3 +1,4 @@
+import pickle
 from src.tools.input_error import input_error, input_error_days
 from src.tools.note_input_error import note_input_error
 from src.tools.input_error_address import input_error_address
@@ -112,12 +113,13 @@ def birthdays(args, book: AddressBook):
 
 @note_input_error
 def add_note(args, note_book: NoteBook):
-    name, *description = args
+    name = " ".join(args).strip()
+    description = input("Enter a description: ")
     note = note_book.find(name)
     if not note:
-        note = Note(name, " ".join(description))
+        note = Note(name, description)
     note_book.add_record(note)
-    return "Note added."
+    return "Note is added."
 
 
 @note_input_error
@@ -137,6 +139,32 @@ def remove_tag(args, note_book: NoteBook):
         raise ValueError(f"Note for {note} doesn't exist. Please add note first")
     note.remove_tag(tag_to_remove)
     return f"Tag {tag_to_remove} removed."
+
+
+def all_notes(note_book: NoteBook):
+    if len(note_book) > 0:
+        print(str(note_book))
+    else:
+        print("No added notes yet")
+
+@note_input_error
+def change_note(args, note_book: NoteBook):
+    name = " ".join(args).strip()
+    new_description = input("Enter a description: ")
+    note = note_book.find(name)
+    if not note:
+        raise ValueError(f"Note {name} is not added yet. Please add note first")
+    note.change_description(new_description)
+    return "Note is changed."
+
+@note_input_error
+def delete_note(args, note_book: NoteBook):
+    name = " ".join(args).strip()
+    note = note_book.find(name)
+    if not note:
+        raise ValueError(f"Note {name} is not added yet. Please add note first")
+    note_book.delete(name)
+    return f"Note {note} is deleted."
 
 
 @input_error_address
@@ -163,3 +191,8 @@ def change_address(args, book: AddressBook):
 def search(args, book: AddressBook):
     search_string, = args
     book.search(search_string)
+
+def save_to_file(files):
+    for f, book in files.items():
+        with open(f, 'wb') as file:
+            pickle.dump(book, file)

@@ -1,51 +1,47 @@
-import os
-from src.classes.record import Record
+from re import search
+
 from src.classes.addressBook import AddressBook
-from src.tools.handlers import add_birthday, add_contact, add_email, birthdays, change_contact, change_email, parse_input, phone, print_contacts, search, show_birthday
 from src.classes.noteBook import NoteBook
+
 from src.tools.handlers import (
-    add_birthday,
+    add_address, 
+    add_birthday, 
     add_contact,
-    add_email,
+    add_email, 
     add_note,
-    birthdays,
+    all_notes, 
+    birthdays, 
     change_contact,
     change_email,
-    parse_input,
-    phone,
+    change_note,
+    delete_note, 
+    parse_input, 
+    phone, 
     print_contacts,
-    show_birthday,
-    add_address,
-    change_address, delete_contact,
+    save_to_file, 
+    show_birthday, 
+    change_address,
+    delete_contact,
     add_tag,
     remove_tag,
-)
-import pickle
+    )
+from src.tools.factory import factory
+
 
 
 def bot():
-    book = None
-    book_from_file = None
-    if os.path.isfile("book.bin"):
-        with open("book.bin", "rb") as file:
-            book_from_file = pickle.load(file)
-    print(str(book_from_file))
+    book = factory(AddressBook, 'book.bin')
+    note_book = factory(NoteBook, 'note-book.bin')
+    print(str(book))
+    print(str(note_book))
     print("Welcome to the assistant bot!")
-
-    if book_from_file:
-        book = book_from_file
-    else:
-        book = AddressBook()
-
-    note_book = NoteBook()
 
     while True:
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            with open("book.bin", "wb") as file:
-                pickle.dump(book, file)
+            save_to_file({"book.bin": book, "note-book.bin": note_book})
             print("Good bye!")
             break
         elif command == "hello":
@@ -82,6 +78,15 @@ def bot():
             print("How can I help you?")
         elif command == "add-note":
             print(add_note(args, note_book))
+            print("How can I help you?")
+        elif command == "change-note":
+            print(change_note(args, note_book))
+            print("How can I help you?")
+        elif command == "delete-note":
+            print(delete_note(args, note_book))
+            print("How can I help you?")
+        elif command == "all-notes":
+            print(all_notes(note_book))
         elif command == "add-tag":
             print(add_tag(args, note_book))
             print("How can I help you?")
