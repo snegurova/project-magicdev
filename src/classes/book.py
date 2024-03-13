@@ -15,3 +15,10 @@ class Book(UserDict):
     
     def delete(self, name):
         self.__delitem__(name)
+        
+    def search(self, seach_str):
+        matches = []
+        for record in self.data.values():
+            if seach_str.lower() in record.name.value.lower():
+                matches.append(record)
+        return matches

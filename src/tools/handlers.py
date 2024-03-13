@@ -190,7 +190,11 @@ def change_address(args, book: AddressBook):
 
 def search(args, book: AddressBook):
     search_string, = args
-    book.search(search_string)
+    book.search_contact(search_string)
+    
+def search_note(args, note_book: NoteBook):
+    search_string, = args
+    note_book.search_note(search_string)
 
 def save_to_file(files):
     for f, book in files.items():

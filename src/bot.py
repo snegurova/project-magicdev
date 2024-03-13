@@ -24,6 +24,8 @@ from src.tools.handlers import (
     delete_contact,
     add_tag,
     remove_tag,
+    search_note,
+    search
     )
 from src.tools.factory import factory
 
@@ -101,6 +103,9 @@ def bot():
             print("How can I help you?")
         elif command == "search":
             print(search(args, book))
+            print("How can I help you?")
+        elif command == "search-note":
+            print(search_note(args, note_book))
             print("How can I help you?")
         else:
             print("Invalid command.")
