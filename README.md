@@ -1,7 +1,3 @@
-# project-magicdev
-
-Below is a sample README file for your console application in Python. This README provides an overview of your application, instructions on how to use it, and details about the available commands.
-
 # Assistant Bot
 
 Assistant Bot is a console-based application written in Python. It serves as a personal assistant for managing contacts and notes efficiently.
