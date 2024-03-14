@@ -63,13 +63,11 @@ def phone(args, book: AddressBook):
         raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
     return str(record)
 
-
 def print_contacts(book: AddressBook):
     if len(book) > 0:
         print(str(book))
     else:
         print("No added contacts yet")
-
 
 @input_error
 def add_birthday(args, book: AddressBook):
@@ -80,6 +78,14 @@ def add_birthday(args, book: AddressBook):
     record.add_birthday(birthday)
     return "Birthday is added"
 
+@input_error
+def change_birthday(args, book: AddressBook):
+    name, new_birthday = args
+    record = book.find(name)
+    if not record:
+        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+    record.change_birthday(new_birthday)
+    return "Birthday changed successfully."
 
 @input_error
 def show_birthday(args, book: AddressBook):

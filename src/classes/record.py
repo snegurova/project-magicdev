@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 from src.classes.birthday import Birthday
 from src.classes.name import Name
 from src.classes.phone import Phone
@@ -21,7 +22,14 @@ class Record:
             self.birthday = None
 
     def add_birthday(self, birthday):
-        self.birthday = Birthday(birthday)
+        self.birthday = Birthday(birthday)   
+          
+    def change_birthday(self, new_birthday):
+        try:
+            new_birthday_date = datetime.strptime(new_birthday, '%d.%m.%Y')
+            self.birthday = Birthday(new_birthday_date)
+        except ValueError:
+            raise ValueError("Date format should be DD.MM.YYYY")
 
     def add_email(self, email):
         self.emails.append(EmailAddress(email))
