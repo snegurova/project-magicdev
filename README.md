@@ -51,6 +51,7 @@ remove-tag: Remove a tag from a note.
 add-address: Add or change the address of a contact.
 change-address: Change the address of a contact.
 search: Search for contacts by various criteria.
+search-note: Search for notes by various criteria.
 close or exit: Save changes and exit the application.
 
 ## License
