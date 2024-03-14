@@ -22,6 +22,6 @@ def input_error_days(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            print("❗ Enter amount of days after command 'birthdays'")
+            print("Enter amount of days after command 'birthdays'")
             return 
     return inner
