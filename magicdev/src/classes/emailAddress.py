@@ -1,6 +1,6 @@
 
 import re
-from src.classes.field import Field
+from .field import Field
 
 class EmailAddress(Field):
     def __init__(self, email):

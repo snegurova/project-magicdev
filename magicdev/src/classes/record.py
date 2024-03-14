@@ -1,9 +1,9 @@
 import re
-from src.classes.birthday import Birthday
-from src.classes.name import Name
-from src.classes.phone import Phone
-from src.classes.address import PostalAddress
-from src.classes.emailAddress import EmailAddress
+from .birthday import Birthday
+from .name import Name
+from .phone import Phone
+from .address import PostalAddress
+from .emailAddress import EmailAddress
 
 
 class Record:

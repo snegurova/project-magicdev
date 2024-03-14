@@ -1,7 +1,7 @@
 from collections import UserDict
 
-from src.classes.record import Record
-from src.classes.note import Note
+from .record import Record
+from .note import Note
 
 
 class Book(UserDict):

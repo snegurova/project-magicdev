@@ -2,10 +2,10 @@ from re import search
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 
-from src.classes.addressBook import AddressBook
-from src.classes.noteBook import NoteBook
+from .classes.addressBook import AddressBook
+from .classes.noteBook import NoteBook
 
-from src.tools.handlers import (
+from .tools.handlers import (
     add_address, 
     add_birthday, 
     add_contact,
@@ -29,14 +29,14 @@ from src.tools.handlers import (
     search_note,
     search
     )
-from src.tools.helper import display_commands
-from src.tools.factory import factory
+from .tools.helper import display_commands
+from .tools.factory import factory
 
 
 
-def bot():
-    book = factory(AddressBook, 'book.bin')
-    note_book = factory(NoteBook, 'note-book.bin')
+def bot(book_file, note_book_file):
+    book = factory(AddressBook, book_file)
+    note_book = factory(NoteBook, note_book_file)
     print(str(book))
     print(str(note_book))
     print("Welcome to the assistant bot!")
@@ -56,7 +56,7 @@ def bot():
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            save_to_file({"book.bin": book, "note-book.bin": note_book})
+            save_to_file({book_file: book, note_book_file: note_book})
             print("Good bye!")
             break
         elif command == "hello":

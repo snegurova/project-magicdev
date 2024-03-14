@@ -1,6 +1,6 @@
-from src.classes.name import Name
-from src.classes.description import Description
-from src.classes.tag import Tag
+from .name import Name
+from .description import Description
+from .tag import Tag
 
 
 class Note:
