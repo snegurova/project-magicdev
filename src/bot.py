@@ -27,6 +27,7 @@ from src.tools.handlers import (
     add_tag,
     remove_tag,
     )
+from src.tools.helper import display_commands
 from src.tools.factory import factory
 
 
@@ -58,6 +59,9 @@ def bot():
             break
         elif command == "hello":
             print("How can I help you?")
+        elif command == "help":
+            display_commands()
+            print("How can I help you?")       
         elif command == "add":
             print(add_contact(args, book))
             print("How can I help you?")
