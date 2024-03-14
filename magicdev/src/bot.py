@@ -2,10 +2,12 @@ from random import choice
 from re import search
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.styles import Style
 
 from .classes.addressBook import AddressBook
 from .classes.noteBook import NoteBook
 
+from .tools.colors import green, red
 from .tools.handlers import (
     add_address,
     add_birthday,
@@ -45,14 +47,14 @@ def print_with_random_emoji(message):
 
 def print_with_random_help_msg():
     random_msg = choice(help_msg)
-    print(f"{random_msg}")
+    print(f"\n{random_msg}")
 
 def bot(book_file, note_book_file):
     book = factory(AddressBook, book_file)
     note_book = factory(NoteBook, note_book_file)
     print(str(book))
     print(str(note_book))
-    print("😎 Welcome to the assistant bot!")
+    print(green("😎 Welcome to the assistant bot!"))
 
     commands = [
         "hello",
@@ -83,12 +85,14 @@ def bot(book_file, note_book_file):
     command_completer = WordCompleter(commands, sentence = True)
 
     while True:
-        user_input = prompt("Enter a command: ", completer=command_completer)
+        style = Style.from_dict({"text": "ansicyan"})
+        text = [("class:text", "Enter a command: ")]
+        user_input = prompt(text, completer=command_completer, style=style)
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
             save_to_file({book_file: book, note_book_file: note_book})
-            print("😊 Good bye!")
+            print(green("😊 Good bye!"))
             break
         elif command == "help":
             display_commands()
@@ -154,4 +158,4 @@ def bot(book_file, note_book_file):
             print(search_note(args, note_book))
             print_with_random_help_msg()
         else:
-            print_with_random_emoji(" Invalid command.")
+            print_with_random_emoji(red(" Invalid command."))
