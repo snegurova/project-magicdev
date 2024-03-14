@@ -22,7 +22,7 @@ def input_error_days(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            print("Enter amount of days")
+            print("Enter amount of days after comand 'birthdays'")
             return 
     return inner
 
