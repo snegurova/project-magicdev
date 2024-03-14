@@ -4,6 +4,7 @@ from .tag_input_error import tag_input_error
 from .input_error import input_error, input_error_days
 from .note_input_error import note_input_error
 from .input_error_address import input_error_address
+from .colors import dark_green, magenta, yellow
 
 from ..classes.addressBook import AddressBook
 from ..classes.noteBook import NoteBook
@@ -32,10 +33,10 @@ def add_contact(args, book: AddressBook):
 @input_error
 def delete_contact(args, book: AddressBook):
     if len(args) == 0:
-        return "❗ Give me user name please."
+        return magenta("❗ Give me user name please.")
     (name,) = args
     book.delete(name)
-    return f"❗ Contact {name} is deleted."
+    return dark_green(f"❗ Contact {name} is deleted.")
 
 
 @input_error
@@ -43,19 +44,19 @@ def change_contact(args, book: AddressBook):
     name, phone, new_phone = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
     record.edit_phone(phone, new_phone)
-    return "👌 Contact is changed."
+    return dark_green("👌 Contact is changed.")
 
 
 @input_error
 def add_email(args, book: AddressBook):
     if len(args) != 2:
-        return "❗ Give me name and email address please."
+        return magenta("❗ Give me name and email address please.")
     name, email = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
     record.add_email(email)
     return "👌 Email is added"
 
@@ -63,13 +64,13 @@ def add_email(args, book: AddressBook):
 @input_error
 def change_email(args, book: AddressBook):
     if len(args) != 3:
-        return "❗ Give me name old email and new email address please."
+        return magenta("❗ Give me name old email and new email address please.")
     name, email, new_email = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"Contact {name} doesn't exist. Please add contact first"))
     record.change_email(email, new_email)
-    return "Email is changed."
+    return dark_green("Email is changed.")
 
 
 @input_error
@@ -77,7 +78,7 @@ def phone(args, book: AddressBook):
     name = args[0]
     record = book.find(name)
     if not record:
-        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
     return str(record)
 
 
@@ -85,7 +86,7 @@ def print_contacts(book: AddressBook):
     if len(book) > 0:
         print(str(book))
     else:
-        print("😳 No added contacts yet")
+        print(yellow("😳 No added contacts yet"))
 
 
 @input_error
@@ -93,9 +94,9 @@ def add_birthday(args, book: AddressBook):
     name, birthday = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
     record.add_birthday(birthday)
-    return "✌️ Birthday is added"
+    return dark_green("Birthday is added")
 
 
 @input_error
@@ -103,12 +104,12 @@ def show_birthday(args, book: AddressBook):
     (name,) = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
     if not record.birthday:
         raise ValueError(
-            f"😳 Birthday for contact {name} is not added yet. Please add birthday first"
+            yellow(f"😳 Birthday for contact {name} is not added yet. Please add birthday first")
         )
-    return f"🎉 Contact {name} birthday is: {str(record.birthday)}"
+    return dark_green(f"🎉 Contact {name} birthday is: {str(record.birthday)}")
 
 
 @input_error_days
@@ -117,7 +118,7 @@ def birthdays(args, book: AddressBook):
     if len(book) > 0:
         book.get_birthdays_per_days(days)
     else:
-        print("😳 No added contacts yet")
+        print(yellow("😳 No added contacts yet"))
 
 
 @tag_input_error
@@ -128,7 +129,7 @@ def add_note(args, note_book: NoteBook):
     if not note:
         note = Note(name, description)
     note_book.add_record(note)
-    return "👌 Note is added."
+    return dark_green("👌 Note is added.")
 
 
 @tag_input_error
@@ -137,10 +138,10 @@ def add_tag(args, note_book: NoteBook):
     note = note_book.find(note_title)
     if not note:
         raise ValueError(
-            f"😳 Note for {note_title} doesn't exist. Please add note first"
+            yellow(f"😳 Note for {note_title} doesn't exist. Please add note first")
         )
     note.add_tag(tag)
-    print(f"✌️ Tag '{tag}' is added to the note '{note_title}'.")
+    print(dark_green(f"Tag '{tag}' is added to the note '{note_title}'."))
 
 
 @note_input_error
@@ -149,17 +150,17 @@ def remove_tag(args, note_book: NoteBook):
     note = note_book.find(note_title)
     if not note:
         raise ValueError(
-            f"😳 Note for {note_title} doesn't exist. Please add note first"
+            yellow(f"😳 Note for {note_title} doesn't exist. Please add note first")
         )
     note.remove_tag(tag_to_remove)
-    return f"❗ Tag {tag_to_remove} removed."
+    return dark_green(f"❗ Tag {tag_to_remove} removed.")
 
 
 def all_notes(note_book: NoteBook):
     if len(note_book) > 0:
         print(str(note_book))
     else:
-        print("😳 No added notes yet")
+        print(yellow("😳 No added notes yet"))
 
 
 @note_input_error
@@ -168,9 +169,9 @@ def change_note(args, note_book: NoteBook):
     new_description = input("Enter a description: ")
     note = note_book.find(name)
     if not note:
-        raise ValueError(f"😳 Note {name} is not added yet. Please add note first")
+        raise ValueError(yellow(f"😳 Note {name} is not added yet. Please add note first"))
     note.change_description(new_description)
-    return "👌 Note is changed."
+    return dark_green("👌 Note is changed.")
 
 
 @note_input_error
@@ -178,9 +179,9 @@ def delete_note(args, note_book: NoteBook):
     name = " ".join(args).strip()
     note = note_book.find(name)
     if not note:
-        raise ValueError(f"😳 Note {name} is not added yet. Please add note first")
+        raise ValueError(yellow(f"😳 Note {name} is not added yet. Please add note first"))
     note_book.delete(name)
-    return f"❗ Note {note} is deleted."
+    return dark_green(f"❗ Note {note} is deleted.")
 
 
 @input_error_address
@@ -189,9 +190,9 @@ def add_address(args, book: AddressBook):
     name, address = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
     record.add_postal_address(address)
-    return f"✌️ {name}`s address is added"
+    return dark_green(f"✌️ {name}`s address is added")
 
 
 @input_error_address
@@ -200,9 +201,9 @@ def change_address(args, book: AddressBook):
     name, new_address = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
     record.edit_postal_address(new_address)
-    return f"👌 {name}`s address is changed."
+    return dark_green(f"👌 {name}`s address is changed.")
 
 
 def search(args, book: AddressBook):
