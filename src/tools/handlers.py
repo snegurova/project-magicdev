@@ -2,6 +2,7 @@ import pickle
 from src.tools.input_error import input_error, input_error_days
 from src.tools.note_input_error import note_input_error
 from src.tools.input_error_address import input_error_address
+from src.tools.tag_input_error import tag_input_error
 from src.classes.addressBook import AddressBook
 from src.classes.noteBook import NoteBook
 from src.classes.record import Record
@@ -23,41 +24,44 @@ def add_contact(args, book: AddressBook):
         record = Record(name)
     record.add_phone(phone)
     book.add_record(record)
-    return "Contact added."
+    return "✌️ Contact added."
+
 
 @input_error
-def delete_contact(args, book:AddressBook):
+def delete_contact(args, book: AddressBook):
     if len(args) == 0:
-        return "Give me user name please."
-    name, = args
+        return "❗ Give me user name please."
+    (name,) = args
     book.delete(name)
-    return f"Contact {name} is deleted."
+    return f"❗ Contact {name} is deleted."
+
 
 @input_error
 def change_contact(args, book: AddressBook):
     name, phone, new_phone = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
     record.edit_phone(phone, new_phone)
-    return "Contact is changed."
+    return "👌 Contact is changed."
 
 
 @input_error
 def add_email(args, book: AddressBook):
     if len(args) != 2:
-        return "Give me name and email address please."
+        return "❗ Give me name and email address please."
     name, email = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
     record.add_email(email)
-    return "Email is added"
+    return "👌 Email is added"
+
 
 @input_error
 def change_email(args, book: AddressBook):
     if len(args) != 3:
-        return "Give me name old email and new email address please."
+        return "❗ Give me name old email and new email address please."
     name, email, new_email = args
     record = book.find(name)
     if not record:
@@ -65,12 +69,13 @@ def change_email(args, book: AddressBook):
     record.change_email(email, new_email)
     return "Email is changed."
 
+
 @input_error
 def phone(args, book: AddressBook):
     name = args[0]
     record = book.find(name)
     if not record:
-        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
     return str(record)
 
 
@@ -78,7 +83,7 @@ def print_contacts(book: AddressBook):
     if len(book) > 0:
         print(str(book))
     else:
-        print("No added contacts yet")
+        print("😳 No added contacts yet")
 
 
 @input_error
@@ -86,9 +91,9 @@ def add_birthday(args, book: AddressBook):
     name, birthday = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
     record.add_birthday(birthday)
-    return "Birthday is added"
+    return "✌️ Birthday is added"
 
 
 @input_error
@@ -96,22 +101,24 @@ def show_birthday(args, book: AddressBook):
     (name,) = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
     if not record.birthday:
         raise ValueError(
-            f"Birthday for contact {name} is not added yet. Please add birthday first"
+            f"😳 Birthday for contact {name} is not added yet. Please add birthday first"
         )
-    return f"Contact {name} birthday is: {str(record.birthday)}"
+    return f"🎉 Contact {name} birthday is: {str(record.birthday)}"
+
 
 @input_error_days
 def birthdays(args, book: AddressBook):
-    days, = args
+    (days,) = args
     if len(book) > 0:
         book.get_birthdays_per_days(days)
-    else: 
-        print("No added contacts yet")
+    else:
+        print("😳 No added contacts yet")
 
-@note_input_error
+
+@tag_input_error
 def add_note(args, note_book: NoteBook):
     name = " ".join(args).strip()
     description = input("Enter a description: ")
@@ -119,34 +126,39 @@ def add_note(args, note_book: NoteBook):
     if not note:
         note = Note(name, description)
     note_book.add_record(note)
-    return "Note is added."
+    return "👌 Note is added."
 
 
-@note_input_error
+@tag_input_error
 def add_tag(args, note_book: NoteBook):
     note_title, tag = args
-    record = note_book.find(note_title)
-    if not record:
-        raise ValueError(f"Note for {note_title} doesn't exist. Please add note first")
-    record.add_tag(tag)
-
+    note = note_book.find(note_title)
+    if not note:
+        raise ValueError(
+            f"😳 Note for {note_title} doesn't exist. Please add note first"
+        )
+    note.add_tag(tag)
+    print(f"✌️ Tag '{tag}' is added to the note '{note_title}'.")
 
 
 @note_input_error
 def remove_tag(args, note_book: NoteBook):
-    note, tag_to_remove = args
-    record = note_book.find(note)
-    if not record:
-        raise ValueError(f"Note for {note} doesn't exist. Please add note first")
+    note_title, tag_to_remove = args
+    note = note_book.find(note_title)
+    if not note:
+        raise ValueError(
+            f"😳 Note for {note_title} doesn't exist. Please add note first"
+        )
     note.remove_tag(tag_to_remove)
-    return f"Tag {tag_to_remove} removed."
+    return f"❗ Tag {tag_to_remove} removed."
 
 
 def all_notes(note_book: NoteBook):
     if len(note_book) > 0:
         print(str(note_book))
     else:
-        print("No added notes yet")
+        print("😳 No added notes yet")
+
 
 @note_input_error
 def change_note(args, note_book: NoteBook):
@@ -154,18 +166,19 @@ def change_note(args, note_book: NoteBook):
     new_description = input("Enter a description: ")
     note = note_book.find(name)
     if not note:
-        raise ValueError(f"Note {name} is not added yet. Please add note first")
+        raise ValueError(f"😳 Note {name} is not added yet. Please add note first")
     note.change_description(new_description)
-    return "Note is changed."
+    return "👌 Note is changed."
+
 
 @note_input_error
 def delete_note(args, note_book: NoteBook):
     name = " ".join(args).strip()
     note = note_book.find(name)
     if not note:
-        raise ValueError(f"Note {name} is not added yet. Please add note first")
+        raise ValueError(f"😳 Note {name} is not added yet. Please add note first")
     note_book.delete(name)
-    return f"Note {note} is deleted."
+    return f"❗ Note {note} is deleted."
 
 
 @input_error_address
@@ -174,9 +187,9 @@ def add_address(args, book: AddressBook):
     name, address = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
     record.add_postal_address(address)
-    return f"{name}`s address is added"
+    return f"✌️ {name}`s address is added"
 
 
 @input_error_address
@@ -185,19 +198,22 @@ def change_address(args, book: AddressBook):
     name, new_address = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
     record.edit_postal_address(new_address)
-    return f"{name}`s address is changed."
+    return f"👌 {name}`s address is changed."
+
 
 def search(args, book: AddressBook):
-    search_string, = args
+    (search_string,) = args
     book.search_contact(search_string)
-    
+
+
 def search_note(args, note_book: NoteBook):
-    search_string, = args
+    (search_string,) = args
     note_book.search_note(search_string)
+
 
 def save_to_file(files):
     for f, book in files.items():
-        with open(f, 'wb') as file:
+        with open(f, "wb") as file:
             pickle.dump(book, file)

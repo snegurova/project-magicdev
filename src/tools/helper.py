@@ -22,7 +22,7 @@ def display_commands():
         {"Command": "delete-note", "Description": "Delete a note.", "Example": "Enter [delete-note] [title]"},
         {"Command": "all-notes", "Description": "Show all Notes.", "Example": "Enter [all-notes]"},
         {"Command": "add-tag", "Description": "Add a tag to a note.", "Example": "Enter [add-tag] [title]"},
-        {"Command": "remove_tag", "Description": "Remove tag from note.", "Example": "Enter [remove_tag] [title]"},
+        {"Command": "remove-tag", "Description": "Remove tag from note.", "Example": "Enter [remove-tag] [title]"},
         {"Command": "close/exit", "Description": "Close the program with saving data.", "Example": "Enter [close] or [exit]"},
     ]
 

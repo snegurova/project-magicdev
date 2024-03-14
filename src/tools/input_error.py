@@ -6,15 +6,15 @@ def input_error(func):
         except ValueError as error:
             str_error = str(error)
             if str_error == "not enough values to unpack (expected at least 1, got 0)" or str_error == "not enough values to unpack (expected 1, got 0)":
-                return "Enter user name"
+                return "❗ Enter user name"
             if str_error.startswith("not enough values to unpack (expected 2"):
-                return "Give me please name and phone"
+                return "❗ Give me please name and phone"
             return str_error
         except KeyError:
             name = contact[0]
-            return f"Contact {name} doesn't exist. Please add contact first"
+            return f"😳 Contact {name} doesn't exist. Please add contact first"
         except IndexError:
-            return "Enter user name"
+            return "❗ Enter user name"
     return inner
 
 def input_error_days(func):
@@ -22,9 +22,6 @@ def input_error_days(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            print("Enter amount of days")
+            print("❗ Enter amount of days")
             return 
     return inner
-
-
-
