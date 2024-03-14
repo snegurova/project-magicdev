@@ -1,4 +1,4 @@
-from src.classes.field import Field
+from .field import Field
 
 class PostalAddress(Field):
     def __init__(self, address):

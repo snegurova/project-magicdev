@@ -1,12 +1,12 @@
-import random
+from random import choice
 from re import search
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 
-from src.classes.addressBook import AddressBook
-from src.classes.noteBook import NoteBook
+from .classes.addressBook import AddressBook
+from .classes.noteBook import NoteBook
 
-from src.tools.handlers import (
+from .tools.handlers import (
     add_address,
     add_birthday,
     add_contact,
@@ -30,8 +30,8 @@ from src.tools.handlers import (
     search_note,
     search,
 )
-from src.tools.helper import display_commands
-from src.tools.factory import factory
+from .tools.helper import display_commands
+from .tools.factory import factory
 
 sos_emojis = ["🫣", "🆘", "🚨", "❌"]
 
@@ -39,18 +39,17 @@ help_msg = ["🤓 How can I help you?", "🤓 Anything else?", "🤓 What else c
 
 
 def print_with_random_emoji(message):
-    random_emoji = random.choice(sos_emojis)
+    random_emoji = choice(sos_emojis)
     print(f"{random_emoji} {message}")
 
 
 def print_with_random_help_msg():
-    random_msg = random.choice(help_msg)
+    random_msg = choice(help_msg)
     print(f"{random_msg}")
 
-
-def bot():
-    book = factory(AddressBook, "book.bin")
-    note_book = factory(NoteBook, "note-book.bin")
+def bot(book_file, note_book_file):
+    book = factory(AddressBook, book_file)
+    note_book = factory(NoteBook, note_book_file)
     print(str(book))
     print(str(note_book))
     print("😎 Welcome to the assistant bot!")
@@ -88,11 +87,9 @@ def bot():
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            save_to_file({"book.bin": book, "note-book.bin": note_book})
+            save_to_file({book_file: book, note_book_file: note_book})
             print("😊 Good bye!")
             break
-        elif command == "hello":
-            print("🤓 How can I help you?")
         elif command == "help":
             display_commands()
             print_with_random_help_msg()

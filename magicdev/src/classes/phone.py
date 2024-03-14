@@ -1,5 +1,5 @@
 import re
-from src.classes.field import Field
+from .field import Field
 
 
 class Phone(Field):

@@ -1,13 +1,15 @@
 import pickle
-from src.tools.input_error import input_error, input_error_days
-from src.tools.note_input_error import note_input_error
-from src.tools.input_error_address import input_error_address
-from src.tools.tag_input_error import tag_input_error
-from src.classes.addressBook import AddressBook
-from src.classes.noteBook import NoteBook
-from src.classes.record import Record
-from src.classes.note import Note
-from src.classes.book import Book
+
+from .tag_input_error import tag_input_error
+from .input_error import input_error, input_error_days
+from .note_input_error import note_input_error
+from .input_error_address import input_error_address
+
+from ..classes.addressBook import AddressBook
+from ..classes.noteBook import NoteBook
+from ..classes.record import Record
+from ..classes.note import Note
+from ..classes.book import Book
 
 
 def parse_input(user_input):

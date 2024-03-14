@@ -1,7 +1,7 @@
 from collections import defaultdict
 from datetime import datetime
 
-from src.classes.book import Book
+from .book import Book
 
 
 class AddressBook(Book):

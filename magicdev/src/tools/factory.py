@@ -1,7 +1,7 @@
 import os
 import pickle
-from src.classes.addressBook import AddressBook
-from src.classes.noteBook import NoteBook
+from ..classes.addressBook import AddressBook
+from ..classes.noteBook import NoteBook
 
 def factory(book: AddressBook | NoteBook, file_name) -> AddressBook | NoteBook:
     instance = None
