@@ -124,11 +124,12 @@ def add_note(args, note_book: NoteBook):
 
 @note_input_error
 def add_tag(args, note_book: NoteBook):
-    note, tag = args
-    record = note_book.find(note)
+    note_title, tag = args
+    record = note_book.find(note_title)
     if not record:
-        raise ValueError(f"Note for {note} doesn't exist. Please add note first")
-    note.add_tag(tag)
+        raise ValueError(f"Note for {note_title} doesn't exist. Please add note first")
+    record.add_tag(tag)
+
 
 
 @note_input_error

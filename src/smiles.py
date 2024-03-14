@@ -1,0 +1,12 @@
+print("😎 or 👋 Welcome to the assistant bot!")
+print("🤓 How can I help you?")
+print("😊 Good bye!")
+print("🫣 or 🆘 or 🚨 or ❌ Invalid command.") # same for all exceptions 
+print("✌️ or 👌 Contact {name} added. // Contact {name} changed")
+print("📱 {record.name.value}`s phone is {phone}")
+print("😳 or 🫤 Contact {args[0]} not found. //  Contacts not found.")
+print("🎉 Birthday for {name}: {record.birthday.value}")
+print("😒 or 😢 No birthday parties this week.")
+print("🎂 Congratulating this week:...")
+print("🤫 Phone number must have 10 digits")
+print("✔️ or❗ Contact {name} is deleted.")

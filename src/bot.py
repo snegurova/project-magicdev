@@ -79,7 +79,6 @@ def bot():
         elif command == "add-note":
             print(add_note(args, note_book))
             print("How can I help you?")
-        elif command == "change-note":
             print(change_note(args, note_book))
             print("How can I help you?")
         elif command == "delete-note":

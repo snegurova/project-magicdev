@@ -24,4 +24,4 @@ class Note:
         self.tags.discard(tag_to_remove)
         
     def __repr__(self):
-        return f"Note: {self.name.value}, description: {self.description.value}, tags: # {' #'.join(p.value for p in self.tags)}"
+        return f"Note: {self.name.value}, description: {self.description.value}, tags: # {' #'.join(p for p in self.tags)}"
