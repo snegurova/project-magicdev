@@ -13,6 +13,5 @@ class Book(UserDict):
             return self.data[name]
         return None
     
-    def delete(self, name, message):
+    def delete(self, name):
         self.__delitem__(name)
-        print(message)

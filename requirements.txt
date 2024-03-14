@@ -1,0 +1,6 @@
+# requirements.txt
+# Include only if you're using external libraries
+# package-name==version
+
+# Replace package-name with the name of the package and version with the specific version you're using. For example:
+# requests==2.26.0

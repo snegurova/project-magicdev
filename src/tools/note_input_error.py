@@ -1,6 +1,8 @@
 def note_input_error(func):
     def inner(*args, **kwargs):
         note = args[0]
+        if len(note) == 0:
+            return "Please enter note title"
         try:
             return func(*args, **kwargs)
         except ValueError as error:
