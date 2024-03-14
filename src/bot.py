@@ -1,4 +1,6 @@
 from re import search
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
 
 from src.classes.addressBook import AddressBook
 from src.classes.noteBook import NoteBook
@@ -24,7 +26,10 @@ from src.tools.handlers import (
     delete_contact,
     add_tag,
     remove_tag,
+    search_note,
+    search
     )
+from src.tools.helper import display_commands
 from src.tools.factory import factory
 
 
@@ -36,8 +41,18 @@ def bot():
     print(str(note_book))
     print("Welcome to the assistant bot!")
 
+    commands = [
+    "hello", "help","add", "change", "add-email", "change-email", "phone",
+    "all", "add-birthday", "show-birthday", "birthdays", "delete",
+    "add-note", "change-note", "delete-note", "all-notes", "add-tag",
+    "remove_tag", "add-address", "change-address", "search", "close",
+    "exit"
+]
+
+    command_completer = WordCompleter(commands)
+
     while True:
-        user_input = input("Enter a command: ")
+        user_input = prompt("Enter a command: ", completer=command_completer)
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
@@ -46,6 +61,9 @@ def bot():
             break
         elif command == "hello":
             print("How can I help you?")
+        elif command == "help":
+            display_commands()
+            print("How can I help you?")       
         elif command == "add":
             print(add_contact(args, book))
             print("How can I help you?")
@@ -100,6 +118,9 @@ def bot():
             print("How can I help you?")
         elif command == "search":
             print(search(args, book))
+            print("How can I help you?")
+        elif command == "search-note":
+            print(search_note(args, note_book))
             print("How can I help you?")
         else:
             print("Invalid command.")
