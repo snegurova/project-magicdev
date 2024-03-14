@@ -80,7 +80,7 @@ def bot(book_file, note_book_file):
         "exit",
     ]
 
-    command_completer = WordCompleter(commands)
+    command_completer = WordCompleter(commands, sentence = True)
 
     while True:
         user_input = prompt("Enter a command: ", completer=command_completer)
@@ -126,6 +126,7 @@ def bot(book_file, note_book_file):
         elif command == "add-note":
             print(add_note(args, note_book))
             print_with_random_help_msg()
+        elif command == "change-note":
             print(change_note(args, note_book))
             print_with_random_help_msg()
         elif command == "delete-note":
