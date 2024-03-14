@@ -36,8 +36,12 @@ class AddressBook(Book):
             if delta_days > delta_start and delta_days < delta_end:
                 str_day_of_week = (birthday_this_year.strftime('%A'), datetime.strftime(birthday_this_year, '%d.%m.%Y'))
                 birthdays_per_week[str_day_of_week].append(name)
-        for day, users in birthdays_per_week.items():
-            print(f"{day[0]:^15} | {day[1]:^12} | {', '.join(users):^15}")
+        if (len(birthdays_per_week)):
+            for day, users in birthdays_per_week.items():
+                print(f"{day[0]:^15} | {day[1]:^12} | {', '.join(users):^15}")
+        else:
+            print(f"You have no contacts with birthday in the coming {days} days")
+            
             
     def search_contact(self, seach_str):
         matches = self.search(seach_str)

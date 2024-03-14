@@ -2,7 +2,6 @@ from .name import Name
 from .description import Description
 from .tag import Tag
 
-
 class Note:
     def __init__(self, title, description):
         self.name = Name(title)
@@ -23,5 +22,8 @@ class Note:
         """removes tag from note"""
         self.tags.discard(tag_to_remove)
         
+
     def __repr__(self):
-        return f"|{self.name.value:^15}|{self.description.value:<100}|{' #'.join(p.value for p in self.tags):^20}"
+        tags_list = sorted(self.tags)  
+        tags_str = ' #'.join(tag for tag in tags_list)
+        return f"|{self.name.value:^15}|{self.description.value:<100}|{tags_str:^20}"
