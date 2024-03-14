@@ -1,4 +1,6 @@
 from re import search
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
 
 from src.classes.addressBook import AddressBook
 from src.classes.noteBook import NoteBook
@@ -36,8 +38,18 @@ def bot():
     print(str(note_book))
     print("Welcome to the assistant bot!")
 
+    commands = [
+    "hello", "help","add", "change", "add-email", "change-email", "phone",
+    "all", "add-birthday", "show-birthday", "birthdays", "delete",
+    "add-note", "change-note", "delete-note", "all-notes", "add-tag",
+    "remove_tag", "add-address", "change-address", "search", "close",
+    "exit"
+]
+
+    command_completer = WordCompleter(commands)
+
     while True:
-        user_input = input("Enter a command: ")
+        user_input = prompt("Enter a command: ", completer=command_completer)
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
