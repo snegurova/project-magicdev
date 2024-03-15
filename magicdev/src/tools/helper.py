@@ -11,6 +11,7 @@ def display_commands():
         {"Command": "change-email [old email] [new email]", "Description": "Change email of a contact."},
         {"Command": "add-birthday [name] [birthday-date]", "Description": "Add birthday to a contact."},
         {"Command": "show-birthday [name]", "Description": "Show birthday of a contact."},
+        {"Command": "change-birthday [name] [birthday-date]", "Description": "Change birthday of a contact."},
         {"Command": "birthdays [day]", "Description": "Show birthdays within a range of days."},
         {"Command": "add-address [name] [address]", "Description": "Add address to a contact. Address argument should not contain spaces."},
         {"Command": "change-address [name] [new address]", "Description": "Change address of a contact."},
