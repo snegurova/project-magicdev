@@ -1,3 +1,5 @@
+from .colors import magenta, yellow
+
 def input_error_address(func):
     """decorator for exceptions"""
 
@@ -6,11 +8,11 @@ def input_error_address(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "❗ Give me name and address please."
+            return magenta("❗ Give me name and address please.")
         except KeyError:
             name = contact[0]
-            return f"😳 Contact {name} doesn't exist. Please add contact first"
+            return yellow(f"😳 Contact {name} doesn't exist. Please add contact first")
         except IndexError:
-            return "❗ Enter user name"
+            return magenta("❗ Enter user name")
 
     return inner
