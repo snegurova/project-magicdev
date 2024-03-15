@@ -22,6 +22,7 @@ from .tools.handlers import (
     change_email,
     change_note,
     delete_note,
+    find_note,
     parse_input,
     phone,
     print_contacts,
@@ -76,12 +77,14 @@ def bot(book_file, note_book_file):
         "add-note",
         "change-note",
         "delete-note",
+        "find-note",
         "all-notes",
         "add-tag",
         "remove-tag",
         "add-address",
         "change-address",
         "search",
+        "search-note",
         "close",
         "exit",
     ]
@@ -139,6 +142,9 @@ def bot(book_file, note_book_file):
             print_with_random_help_msg()
         elif command == "delete-note":
             print(delete_note(args, note_book))
+            print_with_random_help_msg()
+        elif command == "find-note":
+            print(find_note(args, note_book))
             print_with_random_help_msg()
         elif command == "all-notes":
             print(all_notes(note_book))
