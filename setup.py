@@ -14,7 +14,7 @@ setup(
     author = "Magicdev",
     license = "MIT",
     packages = find_namespace_packages(),
-    install_requires = ['prompt-toolkit==3.0.43'],
+    install_requires = ["prompt-toolkit==3.0.43", "ascii-magic==2.3.0"],
     entry_points = {
         "console_scripts" : [
             "magicdev = magicdev.main:main"

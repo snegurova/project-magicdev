@@ -1,8 +1,10 @@
+from pathlib import Path
 from random import choice
 from re import search
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.styles import Style
+from ascii_magic import AsciiArt
 
 from .classes.addressBook import AddressBook
 from .classes.noteBook import NoteBook
@@ -39,6 +41,8 @@ sos_emojis = ["🫣", "🆘", "🚨", "❌"]
 
 help_msg = ["🤓 How can I help you?", "🤓 Anything else?", "🤓 What else can I do for You?"]
 
+dev_image_path = Path(__file__).parent / "tools/dev.jpg"
+dev_image = AsciiArt.from_image(dev_image_path)
 
 def print_with_random_emoji(message):
     random_emoji = choice(sos_emojis)
@@ -52,8 +56,8 @@ def print_with_random_help_msg():
 def bot(book_file, note_book_file):
     book = factory(AddressBook, book_file)
     note_book = factory(NoteBook, note_book_file)
-    print(str(book))
-    print(str(note_book))
+    
+    dev_image.to_terminal()
     print(green("😎 Welcome to the assistant bot!"))
 
     commands = [
