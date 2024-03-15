@@ -5,3 +5,4 @@
 # Replace package-name with the name of the package and version with the specific version you're using. For example:
 # requests==2.26.0
 setuptools==69.2.0
+prompt_toolkit == 3.0.43
