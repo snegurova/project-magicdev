@@ -143,7 +143,9 @@ def add_note(args, note_book: NoteBook):
 
 @tag_input_error
 def add_tag(args, note_book: NoteBook):
-    note_title, tag = args
+    tag = args.pop()
+    note_title = " ".join(args).strip()
+    print( tag, note_title)
     note = note_book.find(note_title)
     if not note:
         raise ValueError(
@@ -155,7 +157,8 @@ def add_tag(args, note_book: NoteBook):
 
 @note_input_error
 def remove_tag(args, note_book: NoteBook):
-    note_title, tag_to_remove = args
+    tag_to_remove = args.pop()
+    note_title = " ".join(args).strip()
     note = note_book.find(note_title)
     if not note:
         raise ValueError(
@@ -192,6 +195,13 @@ def delete_note(args, note_book: NoteBook):
     note_book.delete(name)
     return dark_green(f"❗ Note {note} is deleted.")
 
+@note_input_error
+def find_note(args, note_book: NoteBook):
+    name = " ".join(args).strip()
+    note = note_book.find(name)
+    if not note:
+        raise ValueError(yellow(f"😳 Note {name} is not added yet. Please add note first"))
+    return str(note)
 
 @input_error_address
 def add_address(args, book: AddressBook):
@@ -221,8 +231,10 @@ def search(args, book: AddressBook):
 
 
 def search_note(args, note_book: NoteBook):
-    (search_string,) = args
-    note_book.search_note(search_string)
+    search_string = " ".join(args).strip()
+    if not len(search_string):
+        return(magenta("❗ Enter key words for search"))
+    return note_book.search_note(search_string)
 
 
 def save_to_file(files):
