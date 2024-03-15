@@ -196,7 +196,8 @@ def find_note(args, note_book: NoteBook):
 @input_error_address
 def add_address(args, book: AddressBook):
     """adds address to contact"""
-    name, address = args
+    name = args[0]
+    address = " ".join(args[1:])
     record = book.find(name)
     if not record:
         raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
@@ -207,7 +208,8 @@ def add_address(args, book: AddressBook):
 @input_error_address
 def change_address(args, book: AddressBook):
     """changes existing address of contact"""
-    name, new_address = args
+    name = args[0]
+    new_address = " ".join(args[1:])
     record = book.find(name)
     if not record:
         raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
