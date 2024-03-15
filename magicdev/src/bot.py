@@ -19,6 +19,7 @@ from .tools.handlers import (
     all_notes,
     birthdays,
     change_contact,
+    change_birthday,
     change_email,
     change_note,
     delete_note,
@@ -72,6 +73,7 @@ def bot(book_file, note_book_file):
         "all",
         "add-birthday",
         "show-birthday",
+        "change-birthday",
         "birthdays",
         "delete",
         "add-note",
@@ -127,6 +129,9 @@ def bot(book_file, note_book_file):
             print_with_random_help_msg()
         elif command == "show-birthday":
             print(show_birthday(args, book))
+            print_with_random_help_msg()
+        elif command == "change-birthday":
+            print(change_birthday(args, book))
             print_with_random_help_msg()
         elif command == "birthdays":
             birthdays(args, book)

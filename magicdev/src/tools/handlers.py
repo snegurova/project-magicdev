@@ -111,6 +111,15 @@ def show_birthday(args, book: AddressBook):
         )
     return dark_green(f"🎉 Contact {name} birthday is: {str(record.birthday)}")
 
+@input_error
+def change_birthday(args, book: AddressBook):
+    name, new_birthday = args
+    record = book.find(name)
+    if not record:
+        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+    record.change_birthday(new_birthday)
+    return "🎉 Birthday changed successfully."
+
 
 @input_error_days
 def birthdays(args, book: AddressBook):

@@ -23,6 +23,11 @@ class Record:
     def add_birthday(self, birthday):
         self.birthday = Birthday(birthday)
 
+    def change_birthday(self, new_birthday):
+        if not re.match(r'^\d{2}\.\d{2}\.\d{4}$', new_birthday):
+            raise ValueError("Incorrect date format. Use the format DD.MM.YYYY")
+        self.birthday = Birthday(new_birthday)
+
     def add_email(self, email):
         self.emails.append(EmailAddress(email))
 
