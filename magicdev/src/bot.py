@@ -154,8 +154,13 @@ def bot(book_file, note_book_file):
         elif command == "all-notes":
             print(all_notes(note_book))
             print_with_random_help_msg()
+        # elif command == "add-tag":
+        #     print(add_tag(args, note_book))
+        #     print_with_random_help_msg()
         elif command == "add-tag":
-            print(add_tag(args, note_book))
+            result_message = add_tag(args, note_book)
+            if result_message:
+                print(result_message)
             print_with_random_help_msg()
         elif command == "remove-tag":
             print(remove_tag(args, note_book))

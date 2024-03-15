@@ -6,5 +6,5 @@ class PostalAddress(Field):
             super().__init__(address)
         else:
             raise ValueError(
-                "Error. Address can contain maximum 255 symbols. Please enter correct Address"
+                "❗ Error. Address can contain maximum 255 symbols. Please enter correct Address"
             )

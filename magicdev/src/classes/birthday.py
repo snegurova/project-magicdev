@@ -7,7 +7,7 @@ class Birthday(Field):
             birthday = datetime.strptime(value, '%d.%m.%Y')
             super().__init__(birthday)
         except ValueError:
-            raise ValueError("Date format should be DD.MM.YYYY")
+            raise ValueError("❗  Date format should be DD.MM.YYYY")
         
     def __str__(self):
         return datetime.strftime(self.value, '%d.%m.%Y')
