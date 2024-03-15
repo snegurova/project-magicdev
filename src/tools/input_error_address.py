@@ -6,11 +6,11 @@ def input_error_address(func):
         try:
             return func(*args, **kwargs)
         except ValueError:
-            return "Give me name please."
+            return "❗ Give me name and address please."
         except KeyError:
             name = contact[0]
-            return f"Contact {name} doesn't exist. Please add contact first"
+            return f"😳 Contact {name} doesn't exist. Please add contact first"
         except IndexError:
-            return "Enter user name"
+            return "❗ Enter user name"
 
     return inner
