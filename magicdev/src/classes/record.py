@@ -29,6 +29,9 @@ class Record:
         self.birthday = Birthday(new_birthday)
 
     def add_email(self, email):
+        for item in self.emails:
+            if item.value == email:
+                raise ValueError(f"❗ {email} already exists.")
         self.emails.append(EmailAddress(email))
 
     def change_email(self, email_to_find, new_email):
