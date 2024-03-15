@@ -56,30 +56,34 @@ These instructions will guide you through the process of installing the bot on y
 The application accepts various commands to perform different actions. Here are the available commands:
 
 
-| Command                                                                | Description                                                           |
-|------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| <span style="color:blue">**hello**</span>                              | Say Hi to Bot and it will start work.                                 |
-| <span style="color:blue">**help**</span>                               | List of all bot commands. You`re already here.                        |
-| <span style="color:green">**add [name] [phone]**</span>                 | Add a new contact.                                                    |
+| Command                                                                 | Description                                                             |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| <span style="color:blue">**hello**</span>                               | Say Hi to Bot and it will start work.                                   |
+| <span style="color:blue">**help**</span>                                | List of all bot commands. You`re already here.                          |
+| <span style="color:green">**add [name] [phone]**</span>                  | Add a new contact.                                                      |
 | <span style="color:orange">**change [name] [old phone] [new phone]**</span> | Change contact information.                                           |
-| <span style="color:blue">**phone [name]**</span>                        | Find phone number of a contact.                                       |
-| <span style="color:green">**add-email [name] [email]**</span>           | Add email to a contact.                                               |
-| <span style="color:orange">**change-email [old email] [new email]**</span> | Change email of a contact.                                            |
-| <span style="color:green">**add-birthday [name] [birthday-date]**</span> | Add birthday to a contact.                                            |
-| <span style="color:orange">**show-birthday [name]**</span>              | Show birthday of a contact.                                           |
-| <span style="color:blue">**birthdays [day]**</span>                     | Show birthdays within a range of days.                                |
-| <span style="color:green">**add-address [name] [address]**</span>        | Add address to a contact. Address argument should not contain spaces. |
-| <span style="color:orange">**change-address [name] [new address]**</span> | Change address of a contact.                                          |
-| <span style="color:blue">**search [name]**</span>                       | Search for a contact.                                                 |
-| <span style="color:blue">**all**</span>                                 | Show all contacts.                                                    |
-| <span style="color:red">**delete [name]**</span>                        | Delete a contacts.                                                    |
-| <span style="color:green">**add-note [title]**</span>                   | Create a note.                                                        |
-| <span style="color:orange">**change-note [title]**</span>                | Change a note description.                                            |
-| <span style="color:red">**delete-note [title]**</span>                  | Delete a note.                                                        |
-| <span style="color:blue">**all-notes**</span>                           | Show all Notes.                                                       |
-| <span style="color:green">**add-tag [note-title]**</span>               | Add a tag to a note.                                                  |
-| <span style="color:red">**remove-tag [note-title]**</span>              | Remove tag from note.                                                 |
-| <span style="color:blue">**close/exit**</span>                          | Close the program with saving data.                                   |
+| <span style="color:blue">**phone [name]**</span>                         | Find phone number of a contact.                                         |
+| <span style="color:green">**add-email [name] [email]**</span>            | Add email to a contact.                                                 |
+| <span style="color:orange">**change-email [old email] [new email]**</span> | Change email of a contact.                                              |
+| <span style="color:green">**add-birthday [name] [birthday-date]**</span>  | Add birthday to a contact.                                             |
+| <span style="color:orange">**change-birthday [name] [new birthday]**</span> | Change birthday of a contact.                                          |
+| <span style="color:orange">**show-birthday [name]**</span>               | Show birthday of a contact.                                             |
+| <span style="color:blue">**birthdays [day]**</span>                      | Show birthdays within a range of days.                                  |
+| <span style="color:green">**add-address [name] [address]**</span>        | Add address to a contact. Address argument should not contain spaces.   |
+| <span style="color:orange">**change-address [name] [new address]**</span> | Change address of a contact.                                            |
+| <span style="color:blue">**search [keyword]**</span>                     | Give back list of contacts by keyword (phone, name etc) with partial coincidence. |
+| <span style="color:blue">**all**</span>                                  | Show all contacts.                                                      |
+| <span style="color:red">**delete [name]**</span>                         | Delete a contacts.                                                      |
+| <span style="color:green">**add-note [title]**</span>                     | Create a note.                                                          |
+| <span style="color:orange">**change-note [title]**</span>                 | Change a note description.                                              |
+| <span style="color:blue">**find-note [title]**</span>                     | Find a note by title.                                                   |
+| <span style="color:blue">**search-note [keyword]**</span>                | Give back list of notes by keyword (tag or title) with partial coincidence. |
+| <span style="color:red">**delete-note [title]**</span>                    | Delete a note.                                                          |
+| <span style="color:blue">**all-notes**</span>                             | Show all Notes.                                                         |
+| <span style="color:green">**add-tag [note-title]**</span>                 | Add a tag to a note.                                                    |
+| <span style="color:red">**remove-tag [note-title]**</span>                | Remove tag from note.                                                   |
+| <span style="color:blue">**close/exit**</span>                            | Close the program with saving data.                                      |
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.

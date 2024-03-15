@@ -103,6 +103,8 @@ def bot(book_file, note_book_file):
             save_to_file({book_file: book, note_book_file: note_book})
             print(green("😊 Good bye!"))
             break
+        elif command == "hello":
+            print_with_random_help_msg()
         elif command == "help":
             display_commands()
             print_with_random_help_msg()
