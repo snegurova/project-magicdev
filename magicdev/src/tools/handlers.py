@@ -91,6 +91,8 @@ def print_contacts(book: AddressBook):
 
 @input_error
 def add_birthday(args, book: AddressBook):
+    if len(args) != 2:
+        return magenta("❗ Give me name and birthday date please.")
     name, birthday = args
     record = book.find(name)
     if not record:
@@ -113,6 +115,8 @@ def show_birthday(args, book: AddressBook):
 
 @input_error
 def change_birthday(args, book: AddressBook):
+    if len(args) != 2:
+        return magenta("❗ Give me name and new birthday date please.")
     name, new_birthday = args
     record = book.find(name)
     if not record:
