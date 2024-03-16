@@ -15,6 +15,12 @@ def input_error(func):
                 return magenta("❗ Enter user name")
             if str_error.startswith("not enough values to unpack (expected 2"):
                 return magenta("❗ Give me please name and phone")
+            elif str_error.startswith("not enough values to unpack (expected 3, got 1"):
+                return magenta("❗ Give me please name, old phone and new phone")
+            elif str_error.startswith("not enough values to unpack (expected 3, got 0"):
+                return magenta("❗ Give me please name, old phone and new phone")
+            elif str_error.startswith("not enough values to unpack (expected 3, got 2"):
+                return magenta("❗ Give me please name, old phone and new phone")
             return str_error
         except KeyError:
             name = contact[0]
