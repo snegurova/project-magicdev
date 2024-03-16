@@ -154,7 +154,9 @@ def bot(book_file, note_book_file):
             print(find_note(args, note_book))
             print_with_random_help_msg()
         elif command == "all-notes":
-            print(all_notes(note_book))
+            result_message = all_notes(note_book)
+            if result_message:
+                print(result_message)
             print_with_random_help_msg()
         elif command == "add-tag":
             result_message = add_tag(args, note_book)
@@ -171,7 +173,9 @@ def bot(book_file, note_book_file):
             print(change_address(args, book))
             print_with_random_help_msg()
         elif command == "search":
-            print(search(args, book))
+            result_message = search(args, book)
+            if result_message:
+                print(result_message)
             print_with_random_help_msg()
         elif command == "search-note":
             print(search_note(args, note_book))
