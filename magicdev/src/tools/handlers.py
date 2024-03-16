@@ -72,6 +72,16 @@ def change_email(args, book: AddressBook):
     record.change_email(email, new_email)
     return dark_green("👌 Email is changed.")
 
+@input_error
+def delete_email(args, book: AddressBook):
+    if len(args) != 2:
+        return magenta("❗ Give me name and email address please.")
+    name, email = args
+    record = book.find(name)
+    if not record:
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
+    record.delete_email(email)
+    return dark_green("👌 Email is deleted.")
 
 @input_error
 def phone(args, book: AddressBook):

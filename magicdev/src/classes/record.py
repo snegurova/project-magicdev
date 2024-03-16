@@ -48,6 +48,11 @@ class Record:
                 break
         if not is_changed:
             raise ValueError(yellow(f"😳  Email '{email_to_find}' for contact '{self.name}' not found."))
+        
+    def delete_email(self, email_to_delete):
+        for email in self.emails:
+            if email.value == email_to_delete:
+                self.emails.remove(email)
 
     def add_phone(self, phone):
         for item in self.phones:
