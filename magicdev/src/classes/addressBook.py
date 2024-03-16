@@ -2,7 +2,7 @@ from collections import defaultdict
 from datetime import datetime
 
 from .book import Book
-
+from ..tools.colors import yellow
 
 class AddressBook(Book):
 
@@ -42,7 +42,7 @@ class AddressBook(Book):
             for day, users in birthdays_per_week.items():
                 print(f"{day[0]:^15} | {day[1]:^12} | {', '.join(users):^15}")
         else:
-            print(f"😳 You have no contacts with birthday in the coming {days} days")
+            print(yellow(f"😳 You have no contacts with birthday in the coming {days} days"))
             
             
     def search_contact(self, seach_str):

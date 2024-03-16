@@ -27,7 +27,7 @@ def add_contact(args, book: AddressBook):
         record = Record(name)
     record.add_phone(phone)
     book.add_record(record)
-    return "✌️ Contact added."
+    return dark_green("👌 Contact added.")
 
 
 @input_error
@@ -116,7 +116,7 @@ def change_birthday(args, book: AddressBook):
     name, new_birthday = args
     record = book.find(name)
     if not record:
-        raise ValueError(f"😳 Contact {name} doesn't exist. Please add contact first")
+        raise ValueError(yellow(f"😳 Contact {name} doesn't exist. Please add contact first"))
     record.change_birthday(new_birthday)
     return dark_green("🎉 Birthday changed successfully.")
 
@@ -134,14 +134,14 @@ def birthdays(args, book: AddressBook):
 def add_note(args, note_book: NoteBook):
     name = " ".join(args).strip()
     if not name:  
-        print("❗ Note title is required.")
+        print(yellow("❗ Note title is required."))
         name = input("Enter a note title: ").strip()
         if not name:  
-            return "❗ Note creation cancelled due to no name."
+            return magenta("❗ Note creation cancelled due to no title.")
     note = note_book.find(name)
     if note:
-        print("😳 Note already exists. Please use a different note title.")
-        return "❗ Note creation cancelled due to duplicate name."
+        print(yellow("😳 Note already exists. Please use a different note title."))
+        return magenta("❗ Note creation cancelled due to duplicate title.")
     else:
         description = input("Enter a description: ")
         note = Note(name, description)

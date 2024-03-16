@@ -1,6 +1,7 @@
 
 import re
 from .field import Field
+from ..tools.colors import magenta
 
 class EmailAddress(Field):
     def __init__(self, email):
@@ -8,5 +9,5 @@ class EmailAddress(Field):
         if re.match(pattern, email) is not None:
             super().__init__(email)
         else:
-            raise ValueError("❗  Please use correct e-mail address format. Example: 'ira@gmail.com', 'A111@ukr.net'")
+            raise ValueError(magenta("❗  Please use correct e-mail address format. Example: 'ira@gmail.com', 'A111@ukr.net'"))
         

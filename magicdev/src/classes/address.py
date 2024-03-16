@@ -1,4 +1,5 @@
 from .field import Field
+from ..tools.colors import magenta
 
 class PostalAddress(Field):
     def __init__(self, address):
@@ -6,5 +7,5 @@ class PostalAddress(Field):
             super().__init__(address)
         else:
             raise ValueError(
-                "❗ Error. Address can contain maximum 255 symbols. Please enter correct Address"
+                magenta("❗ Error. Address can contain maximum 255 symbols. Please enter correct Address")
             )
