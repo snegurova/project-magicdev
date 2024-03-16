@@ -145,9 +145,7 @@ def bot(book_file, note_book_file):
             print(add_note(args, note_book))
             print_with_random_help_msg()
         elif command == "change-note":
-            result_message = change_note(args, note_book)
-            if result_message:
-                print(result_message)
+            print(change_note(args, note_book))
             print_with_random_help_msg()
         elif command == "delete-note":
             print(delete_note(args, note_book))
@@ -156,9 +154,7 @@ def bot(book_file, note_book_file):
             print(find_note(args, note_book))
             print_with_random_help_msg()
         elif command == "all-notes":
-            result_message = all_notes(note_book)
-            if result_message:
-                print(result_message)
+            print(all_notes(note_book))
             print_with_random_help_msg()
         elif command == "add-tag":
             result_message = add_tag(args, note_book)
