@@ -239,10 +239,13 @@ def change_address(args, book: AddressBook):
     record.edit_postal_address(new_address)
     return dark_green(f"👌 {name}`s address is changed.")
 
-
+@input_error
 def search(args, book: AddressBook):
-    (search_string,) = args
-    book.search_contact(search_string)
+    if not args:  
+        raise ValueError(magenta("❗ Please give a contact name."))
+    search_string = args[0]  
+    results = book.search_contact(search_string)
+    return results
 
 
 def search_note(args, note_book: NoteBook):
