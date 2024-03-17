@@ -21,13 +21,13 @@ class Note:
     def remove_tag(self, tag_to_remove):
         """removes tag from note"""
         self.tags.discard(tag_to_remove)
-        
+
     def __str__(self):
-        tags_list = sorted(self.tags)  
+        tags_list = sorted(self.tags)
         tags_str = ' #'.join(tag for tag in tags_list)
         return f"Note: {self.name.value} | Description: {self.description.value}| #Tags {tags_str}"
 
     def __repr__(self):
-        tags_list = sorted(self.tags)  
+        tags_list = sorted(self.tags)
         tags_str = ' #'.join(tag for tag in tags_list)
         return f"|{self.name.value:^15}|{self.description.value:<100}|{tags_str:^20}|"

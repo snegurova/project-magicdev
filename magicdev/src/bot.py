@@ -59,7 +59,6 @@ def print_with_random_help_msg():
 def bot(book_file, note_book_file):
     book = factory(AddressBook, book_file)
     note_book = factory(NoteBook, note_book_file)
-    
     dev_image.to_terminal()
     print(green("😎 Welcome to the assistant bot!"))
 
