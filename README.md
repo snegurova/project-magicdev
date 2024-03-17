@@ -14,19 +14,39 @@ Assistant Bot is a console-based application written in Python. It serves as a p
 
 1. Clone the repository:
 
-git clone https://github.com/snegurova/project-magicdev.git
+`git clone https://github.com/snegurova/project-magicdev.git`
 
 2. Navigate to the project directory:
 
-cd project-magicdev
+`cd project-magicdev`
 
 3. Install the required dependencies:
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
-4. Run the application:
+4. Install the application (see instructions below)
 
-python main.py
+5. Run the application:
+
+`magicdev`
+
+## Installation Instructions for Mac
+
+These instructions will guide you through the process of installing the bot on your MacOs computer.
+
+Run commands in the terminal in the project folder
+
+`python3 -m venv env`
+
+`source env/bin/activate`
+
+`pip install -r requirements.txt`
+
+`pip install .`
+
+Run the application:
+
+`magicdev`
 
 ## Installation Instructions for Windows
 
