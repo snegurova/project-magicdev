@@ -21,6 +21,7 @@ from .tools.handlers import (
     change_contact,
     change_birthday,
     change_email,
+    delete_email,
     change_note,
     delete_note,
     find_note,
@@ -69,6 +70,7 @@ def bot(book_file, note_book_file):
         "change",
         "add-email",
         "change-email",
+        "delete-email",
         "phone",
         "all",
         "add-birthday",
@@ -119,6 +121,9 @@ def bot(book_file, note_book_file):
             print_with_random_help_msg()
         elif command == "change-email":
             print(change_email(args, book))
+            print_with_random_help_msg()
+        elif command == "delete-email":
+            print(delete_email(args, book))
             print_with_random_help_msg()
         elif command == "phone":
             print(phone(args, book))
