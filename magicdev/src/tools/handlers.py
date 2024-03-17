@@ -137,10 +137,10 @@ def birthdays(args, book: AddressBook):
 @tag_input_error
 def add_note(args, note_book: NoteBook):
     name = " ".join(args).strip()
-    if not name:  
+    if not name:
         print(yellow("❗ Note title is required."))
         name = input("Enter a note title: ").strip()
-        if not name:  
+        if not name:
             return magenta("❗ Note creation cancelled due to no title.")
     note = note_book.find(name)
     if note:
@@ -190,10 +190,10 @@ def all_notes(note_book: NoteBook):
 def change_note(args, note_book: NoteBook):
     name = " ".join(args).strip()
     if not name:
-        raise ValueError(magenta("❗ A note title is required.")) 
+        raise ValueError(magenta("❗ A note title is required."))
     note = note_book.find(name)
     if not note:
-        raise ValueError(yellow(f"😳 Note '{name}' is not added yet. Please add note first.")) 
+        raise ValueError(yellow(f"😳 Note '{name}' is not added yet. Please add note first."))
     new_description = input("Enter new description: ")
     note.change_description(new_description)
     return dark_green("👌 Note is changed.")

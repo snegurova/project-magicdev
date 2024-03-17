@@ -10,4 +10,3 @@ class EmailAddress(Field):
             super().__init__(email)
         else:
             raise ValueError(magenta("❗  Please use correct e-mail address format. Example: 'ira@gmail.com', 'A111@ukr.net'"))
-        

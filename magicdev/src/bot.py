@@ -58,7 +58,6 @@ def print_with_random_help_msg():
 def bot(book_file, note_book_file):
     book = factory(AddressBook, book_file)
     note_book = factory(NoteBook, note_book_file)
-    
     dev_image.to_terminal()
     print(green("😎 Welcome to the assistant bot!"))
 
@@ -102,7 +101,6 @@ def bot(book_file, note_book_file):
         if command in ["close", "exit"]:
             save_to_file({book_file: book, note_book_file: note_book})
             print(green("😊 Good bye!"))
-            break
         elif command == "hello":
             print_with_random_help_msg()
         elif command == "help":

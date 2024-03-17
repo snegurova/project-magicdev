@@ -12,10 +12,10 @@ class Book(UserDict):
         if name in self.data:
             return self.data[name]
         return None
-    
+
     def delete(self, name):
         self.__delitem__(name)
-        
+
     def search(self, search_str):
         matches = []
         for record in self.data.values():

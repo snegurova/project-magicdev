@@ -8,4 +8,3 @@ class Phone(Field):
             super().__init__(phone)
         else:
             raise ValueError(magenta("❗  Error. Phone number should contain 10 numbers. Please enter correct number"))
-        

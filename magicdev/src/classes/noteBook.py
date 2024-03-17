@@ -8,7 +8,7 @@ class NoteBook(Book):
         for key, note in self.data.items():
             tags = "-----"
             if len(note.tags) > 0:
-                tags = " #".join(p for p in note.tags)      
+                tags = " #".join(p for p in note.tags)
             res += f"|{key:^15}|{note.description.value:<100}|{tags:^20}\n"
         return res
 
@@ -16,7 +16,7 @@ class NoteBook(Book):
         matches = self.search(search_str)
         res = green(f"😳 No results found by:\"{search_str}\" ")
         for _, record in self.data.items():
-            tags = " ".join(p.lower() for p in record.tags) 
+            tags = " ".join(p.lower() for p in record.tags)
             if search_str.lower() in tags:
                 matches.append(record)
         if len(matches):
@@ -24,4 +24,3 @@ class NoteBook(Book):
             for match in matches:
                 res += repr(match) + "\n"
         return res
-        
