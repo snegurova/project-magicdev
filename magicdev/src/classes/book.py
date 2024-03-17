@@ -18,7 +18,8 @@ class Book(UserDict):
 
     def search(self, search_str):
         matches = []
-        for record in self.data.values():
+        sorted_dict = dict(sorted(self.data.items()))
+        for record in sorted_dict.values():
             if search_str.lower() in record.name.value.lower():
                 matches.append(record)
         return matches
