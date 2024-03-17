@@ -48,3 +48,5 @@ class AddressBook(Book):
             print(f'|{"Name":^15}|{"Phones":^25}|{"Birthday":^15}|{"Address":^25}|{"Email":^25}|')
             for match in matches:
                 print(repr(match))
+        else:
+            print(yellow("😳 No matching contacts found."))
